@@ -1,0 +1,13 @@
+# -*- mode: Python -*
+
+os.putenv('DEFAULT_LENGTH', '16')
+os.putenv('DEFAULT_SPECIAL', '4')
+os.putenv('DEFAULT_NUMBERS', '4')
+os.putenv('DEFAULT_COUNT', '5')
+os.putenv('MAXLENGTH', '32')
+os.putenv('MAXCOUNT', '50')
+
+docker_build('ghcr.io/michaelniemand/py-passwords', '.', dockerfile='Dockerfile')
+
+
+#
