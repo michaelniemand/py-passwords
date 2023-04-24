@@ -10,13 +10,13 @@ DEFAULT_LENGTH = os.getenv('DEFAULT_LENGTH', '12')
 DEFAULT_SPECIAL = os.getenv('DEFAULT_SPECIAL', '0')
 DEFAULT_NUMBERS = os.getenv('DEFAULT_NUMBERS', '0')
 DEFAULT_COUNT = os.getenv('DEFAULT_COUNT', '1')
-MAXLENGTH = os.getenv('MAXLENGTH', '64')
+MAXLENGTH = os.getenv('MAXLENGTH', '24')
 MAXCOUNT = os.getenv('MAXCOUNT', '100')
 
 @app.route('/get-password')
 
 def get_pw():
-# get URL params
+# get URI params
     param_length = request.args.get('length')
     param_special = request.args.get('special')
     param_numbers = request.args.get('numbers')
@@ -65,16 +65,19 @@ def get_pw():
         msg = 'The pwcount must not be bigger than %s' % MAXCOUNT
         return jsonify(msg), 400
 
+# populate actual array
     passwords = []
 
     for i in range(param_pwcount):
 
+# define alphabet
         alphabet_letters = string.ascii_letters
         alphabet_digits = string.digits
         alphabet_special = string.punctuation
 
         alphabet = alphabet_letters + alphabet_digits + alphabet_special
 
+# cycle through passwords until conditions met (number of certain characters & no quotes) and append to array; then exit & return array
         while True:
             password = ''
             for i in range(param_length):
