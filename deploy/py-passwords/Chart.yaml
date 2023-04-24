@@ -1,6 +1,7 @@
 apiVersion: v2
 name: py-passwords
 description: A Helm chart for Kubernetes
+icon: https://avatars.githubusercontent.com/u/85166523?v=4
 
 # A chart can be either an 'application' or a 'library' chart.
 #
