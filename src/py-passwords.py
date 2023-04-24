@@ -10,7 +10,7 @@ DEFAULT_LENGTH = os.getenv('DEFAULT_LENGTH', '12')
 DEFAULT_SPECIAL = os.getenv('DEFAULT_SPECIAL', '0')
 DEFAULT_NUMBERS = os.getenv('DEFAULT_NUMBERS', '0')
 DEFAULT_COUNT = os.getenv('DEFAULT_COUNT', '1')
-MAXLENGTH = os.getenv('MAXLENGTH', '24')
+MAXLENGTH = os.getenv('MAXLENGTH', '16')
 MAXCOUNT = os.getenv('MAXCOUNT', '100')
 
 @app.route('/get-password')
@@ -32,37 +32,37 @@ def get_pw():
     try:
         param_length = int(param_length)
     except ValueError:
-        msg = 'The length parameter must be an integer'
+        msg = 'length must be an integer'
         return jsonify(msg), 400
 
     try:
         param_special = int(param_special)
     except ValueError:
-        msg = 'The special parameter must be an integer'
+        msg = 'special must be an integer'
         return jsonify(msg), 400
 
     try:
         param_numbers = int(param_numbers)
     except ValueError:
-        msg = 'The numbers parameter must be an integer'
+        msg = 'numbers must be an integer'
         return jsonify(msg), 400
 
     try:
         param_pwcount = int(param_pwcount)
     except ValueError:
-        msg = 'The pwcount parameter must be an integer'
+        msg = 'pwcount must be an integer'
         return jsonify(msg), 400
 
     if param_special + param_numbers > param_length:
-        msg = 'The length must not be smaller than the sum of numbers and special'
+        msg = 'length must not be smaller than the sum of numbers and special'
         return jsonify(msg), 400
 
     if param_length > int(MAXLENGTH):
-        msg = 'The length must not be bigger than %s' % MAXLENGTH
+        msg = 'length must not be bigger than %s' % MAXLENGTH
         return jsonify(msg), 400
 
     if param_pwcount > int(MAXCOUNT):
-        msg = 'The pwcount must not be bigger than %s' % MAXCOUNT
+        msg = 'pwcount must not be bigger than %s' % MAXCOUNT
         return jsonify(msg), 400
 
 # populate actual array
