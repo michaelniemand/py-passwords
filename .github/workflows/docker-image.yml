@@ -27,7 +27,12 @@ jobs:
         registry: ${{ env.DOCKER_REGISTRY }}
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
-
+        
+    - id: repostring
+      uses: ASzc/change-string-case-action@v3
+      with:
+        string: ${{ github.repository }}
+          
     - name: Build and push Kumpel
       uses: docker/build-push-action@v3
       with:
