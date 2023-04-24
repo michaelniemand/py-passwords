@@ -6,8 +6,10 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  DOCKER_REGISTRY: ghcr.io
+  
 jobs:
-
   build:
 
     runs-on: ubuntu-latest
