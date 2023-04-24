@@ -8,7 +8,7 @@ image:
   repository: ghcr.io/michaelniemand/py-passwords/py-passwords
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "a28a018"
+  tag: "0fd190b"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -42,8 +42,8 @@ service:
   targetPort: 8000
 
 ingress:
-  enabled: true
-  className: "contour"
+  enabled: false
+  className: ""
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
